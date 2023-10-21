@@ -55,7 +55,9 @@ export default class CookieJar {
             ]);
         if (!this.cookies.has(cookie.domain))
             this.cookies.set(cookie.domain, new Map());
-        this.cookies.get(cookie.domain).set(cookie.name, cookie);
+        if ( cookie.value.length > 0 ) {
+            this.cookies.get(cookie.domain).set(cookie.name, cookie);
+        }
         return true;
     }
     domains() {
